@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kit Completo Expert em Licitações - Vença Mais Disputas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .bg-gradient-blue {
+            background: linear-gradient(135deg, #1e3a8a 0%, #172554 100%);
+        }
+        
+        .text-gold {
+            color: #D4AF37;
+        }
+        
+        .border-gold {
+            border-color: #D4AF37;
+        }
+        
+        .btn-gold {
+            background: linear-gradient(135deg, #D4AF37 0%, #F4D03F 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-gold:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+        }
+        
+        .shadow-gold {
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+        
+        .document-icon {
+            position: relative;
+        }
+        
+        .document-icon:before {
+            content: "";
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 2px dashed rgba(212, 175, 55, 0.5);
+            border-radius: 8px;
+            pointer-events: none;
+        }
+        
+        .countdown-box {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .popup-content {
+            animation: fadeIn 0.5s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Popup de captura -->
+    <div id="popup" class="popup">
+        <div class="popup-content bg-white rounded-xl p-8 max-w-md mx-4 relative">
+            <button onclick="closePopup()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+            <h3 class="text-2xl font-bold text-blue-900 mb-4">Ganhe um Modelo de Recurso Grátis!</h3>
+            <p class="text-gray-700 mb-6">Cadastre seu e-mail e receba imediatamente um modelo de recurso administrativo pronto para usar, cortesia do Expert em Licitações.</p>
+            <form id="lead-form" class="space-y-4">
+                <input type="text" placeholder="Seu nome" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <input type="email" placeholder="Seu melhor e-mail" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                <button type="submit" class="w-full btn-gold text-white font-bold py-3 px-6 rounded-lg shadow-gold hover:shadow-xl transition-all duration-300">
+                    QUERO MEU MODELO GRÁTIS <i class="fas fa-arrow-right ml-2"></i>
+                </button>
+            </form>
+            <p class="text-xs text-gray-500 mt-4">Seus dados estão protegidos. Não enviamos spam.</p>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-gradient-blue text-white shadow-lg">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="document-icon bg-white p-2 rounded-lg mr-3">
+                    <i class="fas fa-file-contract text-2xl text-blue-900"></i>
+                </div>
+                <span class="text-xl font-bold">Expert em Licitações</span>
+            </div>
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#solucao" class="hover:text-gold transition">O Kit</a>
+                <a href="#beneficios" class="hover:text-gold transition">Benefícios</a>
+                <a href="#prova" class="hover:text-gold transition">Depoimentos</a>
+                <a href="#garantia" class="hover:text-gold transition">Garantia</a>
+            </div>
+            <button class="md:hidden text-white" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-blue-900 px-4 py-2">
+            <div class="flex flex-col space-y-3">
+                <a href="#solucao" class="text-white hover:text-gold py-2 border-b border-blue-800">O Kit</a>
+                <a href="#beneficios" class="text-white hover:text-gold py-2 border-b border-blue-800">Benefícios</a>
+                <a href="#prova" class="text-white hover:text-gold py-2 border-b border-blue-800">Depoimentos</a>
+                <a href="#garantia" class="text-white hover:text-gold py-2">Garantia</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-blue text-white py-16 md:py-24">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <div class="flex items-center mb-4">
+                    <div class="bg-gold text-blue-900 text-xs font-bold px-3 py-1 rounded-full mr-3">NOVO</div>
+                    <span class="text-sm">Mais de 400 mil inscritos no YouTube</span>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">Torne-se um Verdadeiro Expert em Licitações — e Vença Mais Disputas!</h1>
+                <p class="text-xl mb-8 text-gray-200">Pare de perder contratos valiosos por erros simples nos recursos. Aprenda a participar, recorrer e se defender em qualquer disputa pública — como um verdadeiro profissional.</p>
+                
+                <div class="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-4 mb-8">
+                    <a href="#oferta" class="btn-gold text-white font-bold py-4 px-8 rounded-lg shadow-gold hover:shadow-xl transition-all duration-300 text-center w-full sm:w-auto">
+                        QUERO ME TORNAR UM EXPERT AGORA <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                    <div class="flex items-center text-sm text-gray-300">
+                        <i class="fas fa-lock text-gold mr-2"></i>
+                        Pagamento 100% seguro
+                    </div>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <div class="flex -space-x-2">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-10 h-10 rounded-full border-2 border-blue-900" alt="Cliente">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-10 h-10 rounded-full border-2 border-blue-900" alt="Cliente">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" class="w-10 h-10 rounded-full border-2 border-blue-900" alt="Cliente">
+                    </div>
+                    <div class="text-sm">
+                        <p class="font-bold">+2.500 licitantes transformados</p>
+                        <p class="text-gray-300">em todo o Brasil</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="md:w-1/2 relative">
+                <div class="bg-white p-6 rounded-xl shadow-2xl transform rotate-3 border-2 border-gold">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-blue-900 font-bold text-xl">Kit Completo Expert em Licitações</h3>
+                            <p class="text-gray-600">Edição Limitada</p>
+                        </div>
+                        <div class="bg-blue-900 text-white text-xs font-bold px-2 py-1 rounded">
+                            <i class="fas fa-bolt text-gold mr-1"></i> ACESSO IMEDIATO
+                        </div>
+                    </div>
+                    
+                    <div class="flex mb-6">
+                        <div class="w-1/2 pr-2">
+                            <div class="bg-gray-100 rounded-lg h-48 flex items-center justify-center">
+                                <img src="src/Manual do Expert em Licitações.png" width="150" height="250" alt="E-book Manual do Expert">
+                            </div>
+                        </div>
+                        <div class="w-1/2 pl-2">
+                            <div class="bg-gray-100 rounded-lg h-48 flex items-center justify-center">
+                                <img src="src/Guias e Checklists de Licitações.png" width="150" height="250" alt="E-book Guias e Checklists de Licitações">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-blue-50 rounded-lg p-4 border border-blue-200">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-folder-open text-gold mr-2"></i>
+                            <span class="font-bold text-blue-900">BÔNUS EXCLUSIVO</span>
+                        </div>
+                        <p class="text-sm text-gray-800">+100 Modelos de Recursos Administrativos prontos para usar</p>
+                    </div>
+                    
+                    <div class="mt-6 flex justify-between items-center">
+                        <div>
+                            <p class="text-2xl font-bold text-blue-900">R$ 49,90</p>
+                        </div>
+                        <div class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded">
+                            <i class="fas fa-clock mr-1"></i> OFERTA POR TEMPO LIMITADO
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="absolute -bottom-6 -left-6 bg-white p-3 rounded-full shadow-lg border-2 border-gold">
+                    <i class="fas fa-medal text-3xl text-gold"></i>
+                </div>
+                <div class="absolute -top-6 -right-6 bg-white p-3 rounded-full shadow-lg border-2 border-gold">
+                    <i class="fas fa-award text-3xl text-gold"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contador Regressivo -->
+    <div class="bg-blue-900 text-white py-4">
+        <div class="container mx-auto px-4">
+            <div class="countdown-box bg-red-600 rounded-lg py-3 px-6 max-w-2xl mx-auto text-center">
+                <div class="flex justify-center items-center space-x-2">
+                    <i class="fas fa-bolt text-yellow-300"></i>
+                    <p class="font-bold">OFERTA ESPECIAL EXPIRA EM: <span id="countdown" class="ml-2">24:00:00</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Seção Problema -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-6">Você pode estar perdendo contratos mesmo oferecendo o melhor preço...</h2>
+                <div class="w-20 h-1 bg-gold mx-auto mb-6"></div>
+                <p class="text-lg text-gray-700">A maioria dos licitantes acha que basta enviar a proposta e aguardar. Mas a verdade é que quem não domina a etapa dos recursos administrativos está sempre em desvantagem. Erros no edital, propostas desclassificadas e recursos mal elaborados custam milhares de reais em oportunidades perdidas.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-blue-50 p-6 rounded-xl border border-blue-200">
+                    <div class="text-gold text-4xl mb-4">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-blue-900 mb-3">Propostas Desclassificadas</h3>
+                    <p class="text-gray-700">Muitas empresas são eliminadas por erros simples que poderiam ser evitados com o conhecimento certo.</p>
+                </div>
+                
+                <div class="bg-blue-50 p-6 rounded-xl border border-blue-200">
+                    <div class="text-gold text-4xl mb-4">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-blue-900 mb-3">Prazos Perdidos</h3>
+                    <p class="text-gray-700">Sem modelos prontos, muitos licitantes perdem o prazo para recorrer ou não sabem como fazê-lo corretamente.</p>
+                </div>
+                
+                <div class="bg-blue-50 p-6 rounded-xl border border-blue-200">
+                    <div class="text-gold text-4xl mb-4">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-blue-900 mb-3">Oportunidades Perdidas</h3>
+                    <p class="text-gray-700">Contratos valiosos são perdidos para concorrentes que dominam melhor as estratégias de licitação.</p>
+                </div>
+            </div>
+            
+            <div class="max-w-3xl mx-auto text-center mt-12">
+                <p class="text-xl font-bold text-blue-900 mb-6">Com o conhecimento certo, você pode virar o jogo e conquistar contratos que hoje parecem impossíveis.</p>
+                <a href="#oferta" class="btn-gold text-white font-bold py-4 px-8 rounded-lg shadow-gold hover:shadow-xl transition-all duration-300 inline-block">
+                    QUERO APRENDER AS ESTRATÉGIAS <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Solução -->
+    <section id="solucao" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-6">O Kit Completo Expert em Licitações</h2>
+                <div class="w-20 h-1 bg-gold mx-auto mb-6"></div>
+                <p class="text-lg text-gray-700 max-w-3xl mx-auto">Criado por quem já venceu disputas reais e ensina mais de 400 mil pessoas no YouTube, este kit reúne tudo para você disputar licitações em alto nível.</p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center mb-16">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="E-books Expert em Licitações" class="rounded-xl shadow-xl border-2 border-gold">
+                </div>
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-bold text-blue-900 mb-6">Você vai receber:</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="text-gold text-2xl mr-4 mt-1">
+                                <i class="fas fa-book-open"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-blue-900 mb-2">E-book "Manual do Expert em Licitações"</h4>
+                                <p class="text-gray-700">Do básico ao avançado para participar e vencer, com estratégias comprovadas em disputas reais.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="text-gold text-2xl mr-4 mt-1">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-blue-900 mb-2">E-book "Guia dos Recursos em Processos de Licitação"</h4>
+                                <p class="text-gray-700">Passo a passo para elaborar recursos irrefutáveis que aumentam suas chances de vitória.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="text-gold text-2xl mr-4 mt-1">
+                                <i class="fas fa-folder-open"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-blue-900 mb-2">Pack com +100 Modelos de Recursos Administrativos</h4>
+                                <p class="text-gray-700">Prontos para copiar, adaptar e enviar, economizando horas de trabalho e aumentando sua eficiência.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <a href="#oferta" class="btn-gold text-white font-bold py-4 px-8 rounded-lg shadow-gold hover:shadow-xl transition-all duration-300 inline-block">
+                            QUERO MEU KIT COMPLETO <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+        <!-- <div class="bg-blue-900 text-white rounded-xl p-8 md:p-12 relative overflow-hidden">
+                <div class="absolute -right-10 -top-10 text-blue-800 text-9xl opacity-20">
+                    <i class="fas fa-gem"></i>
+                </div>
+                <div class="relative z-10">
+                    <h3 class="text-2xl md:text-3xl font-bold mb-6">Bônus Exclusivo para os Primeiros 100 Compradores</h3>
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="md:w-2/3 mb-6 md:mb-0">
+                            <p class="text-lg mb-4">Adquira agora e receba gratuitamente a <span class="font-bold text-gold">Gravação Exclusiva do Workshop "Estratégias Avançadas para Vencer Licitações"</span> (valor R$ 97,00).</p>
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-gold mr-2"></i>
+                                <span>Como identificar editais favoráveis</span>
+                            </div>
+                            <div class="flex items-center my-2">
+                                <i class="fas fa-check-circle text-gold mr-2"></i>
+                                <span>Técnicas para análise de concorrência</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-gold mr-2"></i>
+                                <span>Métodos para aumentar seu faturamento com licitações</span>
+                            </div>
+                        </div>
+                        <div class="md:w-1/3 text-center">
+                            <div class="bg-white text-blue-900 inline-block px-6 py-3 rounded-lg font-bold border-2 border-gold">
+                                <div class="text-sm">BÔNUS</div>
+                                <div class="text-2xl">GRÁTIS</div>
+                                <div class="text-xs">PARA OS 100 PRIMEIROS</div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Benefícios -->
+    <section id="beneficios" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-6">Com este kit, você vai:</h2>
+                <div class="w-20 h-1 bg-gold mx-auto mb-6"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="flex items-start">
+                    <div class="text-gold text-xl mr-4 mt-1">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">Disputar licitações com muito mais segurança e estratégia</h3>
+                        <p class="text-gray-700">Conhecimento prático para participar de qualquer processo licitatório com confiança.</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-start">
+                    <div class="text-gold text-xl mr-4 mt-1">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">Ter recursos prontos para responder rapidamente e não perder prazos</h3>
+                        <p class="text-gray-700">+100 modelos editáveis para todas as situações comuns em licitações.</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-start">
+                    <div class="text-gold text-xl mr-4 mt-1">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">Evitar erros que podem eliminar sua proposta</h3>
+                        <p class="text-gray-700">Checklists e orientações para não cometer deslizes que levam à desclassificação.</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-start">
+                    <div class="text-gold text-xl mr-4 mt-1">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">Economizar tempo com modelos testados e aprovados</h3>
+                        <p class="text-gray-700">Não perca horas criando documentos do zero quando pode adaptar modelos prontos.</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-start">
+                    <div class="text-gold text-xl mr-4 mt-1">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">Aumentar sua taxa de vitórias e fechar mais contratos</h3>
+                        <p class="text-gray-700">Técnicas avançadas para se destacar da concorrência e vencer mais disputas.</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-start">
+                    <div class="text-gold text-xl mr-4 mt-1">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">Aprender com quem já venceu centenas de licitações</h3>
+                        <p class="text-gray-700">Conteúdo baseado em experiência real, não apenas em teoria.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="max-w-2xl mx-auto bg-blue-50 rounded-xl p-8 mt-16 border-2 border-gold text-center">
+                <h3 class="text-2xl font-bold text-blue-900 mb-4">Quanto vale um contrato que você poderia ganhar?</h3>
+                <p class="text-lg text-gray-700 mb-6">O Kit Completo Expert em Licitações pode ser o diferencial para você fechar contratos que pagam o investimento muitas vezes.</p>
+                <a href="#oferta" class="btn-gold text-white font-bold py-4 px-8 rounded-lg shadow-gold hover:shadow-xl transition-all duration-300 inline-block">
+                    QUERO VENCER MAIS LICITAÇÕES <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Prova Social -->
+    <section id="prova" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-6">De quem já ajudou milhares de licitantes no Brasil inteiro</h2>
+                <div class="w-20 h-1 bg-gold mx-auto mb-6"></div>
+                <p class="text-lg text-gray-700 max-w-3xl mx-auto">Este kit foi criado pelo canal Expert em Licitações, com mais de 400 mil inscritos e milhares de seguidores que já aprenderam a vencer mais disputas.</p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center mb-16">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
+                        <div class="flex items-center mb-6">
+                            <img src="https://yt3.googleusercontent.com/ytc/APkrFKZWeMCsx4Q9e_Hm6nhOOUQ3fv96QGUXiMr1-pPP=s176-c-k-c0x00ffffff-no-rj" alt="Canal Expert em Licitações" class="w-16 h-16 rounded-full mr-4">
+                            <div>
+                                <h3 class="font-bold text-blue-900">Expert em Licitações</h3>
+                                <p class="text-sm text-gray-600">Canal no YouTube</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-users text-gold mr-2"></i>
+                                <span class="font-bold">400.000+</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-thumbs-up text-gold mr-2"></i>
+                                <span class="font-bold">98%</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 mb-4">"Nosso objetivo é transformar licitantes em verdadeiros experts, capazes de disputar e vencer qualquer processo licitatório com estratégia e conhecimento técnico."</p>
+                        <a href="#" class="text-blue-600 hover:underline flex items-center">
+                            <i class="fab fa-youtube mr-2 text-red-600"></i> Ver canal no YouTube
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <div class="space-y-6">
+                        <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
+                            <div class="flex items-start">
+                                <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="Depoimento" class="w-12 h-12 rounded-full mr-4">
+                                <div>
+                                    <div class="flex items-center mb-1">
+                                        <span class="font-bold text-blue-900 mr-2">Ana Carolina S.</span>
+                                        <div class="flex text-gold">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-700">"Com os modelos prontos do kit, consegui elaborar um recurso em poucas horas que salvou minha proposta. O contrato foi de R$ 120.000,00!"</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
+                            <div class="flex items-start">
+                                <img src="https://randomuser.me/api/portraits/men/65.jpg" alt="Depoimento" class="w-12 h-12 rounded-full mr-4">
+                                <div>
+                                    <div class="flex items-center mb-1">
+                                        <span class="font-bold text-blue-900 mr-2">Roberto T.</span>
+                                        <div class="flex text-gold">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-700">"Depois de aplicar as estratégias do e-book, minha taxa de sucesso em licitações aumentou em 40%. Valeu cada centavo!"</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
+                            <div class="flex items-start">
+                                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Depoimento" class="w-12 h-12 rounded-full mr-4">
+                                <div>
+                                    <div class="flex items-center mb-1">
+                                        <span class="font-bold text-blue-900 mr-2">Juliana M.</span>
+                                        <div class="flex text-gold">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-700">"O pack de modelos me salvou quando precisei recorrer com urgência. Em uma semana, já havia recuperado o investimento no kit."</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="max-w-3xl mx-auto text-center">
+                <a href="#oferta" class="btn-gold text-white font-bold py-4 px-8 rounded-lg shadow-gold hover:shadow-xl transition-all duration-300 inline-block">
+                    QUERO FAZER PARTE DESSE GRUPO <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Garantia -->
+    <section id="garantia" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center bg-blue-50 rounded-xl overflow-hidden border border-blue-200">
+                <div class="md:w-1/3 bg-blue-900 text-white p-8 md:p-12 text-center">
+                    <div class="inline-block bg-white text-blue-900 rounded-full p-6 mb-6">
+                        <i class="fas fa-shield-alt text-4xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Risco zero para você</h3>
+                    <p class="text-lg">Sua satisfação garantida ou seu dinheiro de volta</p>
+                </div>
+                
+                <div class="md:w-2/3 p-8 md:p-12">
+                    <h2 class="text-3xl font-bold text-blue-900 mb-6">Garantia Incondicional de 7 Dias</h2>
+                    <p class="text-lg text-gray-700 mb-6">Você tem 7 dias para testar o Kit Completo Expert em Licitações. Se por qualquer motivo achar que não é para você, devolvemos 100% do seu investimento — sem burocracia.</p>
+                    
+                    <div class="flex items-center">
+                        <i class="fas fa-check-circle text-2xl text-gold mr-4"></i>
+                        <span class="text-lg font-bold text-blue-900">Sem perguntas</span>
+                    </div>
+                    <div class="flex items-center my-3">
+                        <i class="fas fa-check-circle text-2xl text-gold mr-4"></i>
+                        <span class="text-lg font-bold text-blue-900">Sem complicações</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-check-circle text-2xl text-gold mr-4"></i>
+                        <span class="text-lg font-bold text-blue-900">Devolução rápida</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Chamada Final -->
+    <section id="oferta" class="py-16 bg-gradient-blue text-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Sua próxima vitória começa agora</h2>
+                <div class="w-20 h-1 bg-gold mx-auto mb-6"></div>
+                <p class="text-xl mb-8">Chega de perder contratos por não saber recorrer ou se defender. Com o Kit Completo Expert em Licitações, você estará pronto para disputar e vencer em alto nível — desde o primeiro dia.</p>
+                
+                <div class="flex justify-center mb-8">
+                    <div class="bg-white text-blue-900 rounded-lg p-6 shadow-xl max-w-md w-full border-2 border-gold">
+                        <div class="flex justify-between items-center mb-4">
+                            <div class="text-right">
+                                <p class="text-sm text-gray-600">Por apenas</p>
+                                <p class="text-3xl font-bold">R$ 49,90</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-blue-50 text-blue-900 rounded-lg p-4 mb-4 border border-blue-200">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <p class="font-bold">Kit Completo Expert em Licitações</p>
+                                    <p class="text-sm">Acesso imediato e vitalício</p>
+                                </div>
+                                <div class="text-gold text-2xl">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-blue-50 text-blue-900 rounded-lg p-4 mb-6 border border-blue-200">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <p class="font-bold">Bônus: Workshop Avançado</p>
+                                    <p class="text-sm">(apenas para os 100 primeiros)</p>
+                                </div>
+                                <div class="text-gold text-2xl">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-red-100 text-red-800 text-sm rounded-lg p-3 mb-6 flex items-center justify-center">
+                            <i class="fas fa-clock mr-2"></i>
+                            <span>Oferta especial expira em: <span id="countdown2" class="font-bold">24:00:00</span></span>
+                        </div>
+                        
+                        <a href="#" class="btn-gold text-white font-bold py-4 px-8 rounded-lg shadow-gold hover:shadow-xl transition-all duration-300 block w-full text-center">
+                            QUERO ACESSAR O KIT AGORA <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        
+                        <div class="flex items-center justify-center mt-4 text-sm">
+                            <i class="fas fa-lock text-gold mr-2"></i>
+                            <span>Pagamento 100% seguro</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex flex-wrap justify-center gap-4">
+                    <img src="https://logodownload.org/wp-content/uploads/2014/10/visa-logo-1.png" alt="Visa" class="h-8">
+                    <img src="https://logodownload.org/wp-content/uploads/2014/10/mastercard-logo-3.png" alt="Mastercard" class="h-8">
+                    <img src="https://logodownload.org/wp-content/uploads/2014/10/hipercard-logo-1.png" alt="Hipercard" class="h-8">
+                    <img src="https://logodownload.org/wp-content/uploads/2019/07/elo-logo-1.png" alt="Elo" class="h-8">
+                    <img src="https://logodownload.org/wp-content/uploads/2014/10/boleto-logo-1.png" alt="Boleto" class="h-8">
+                    <img src="https://logodownload.org/wp-content/uploads/2017/04/pix-logo.png" alt="Pix" class="h-8">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center">
+                        <div class="document-icon bg-white p-2 rounded-lg mr-3">
+                            <i class="fas fa-file-contract text-2xl text-blue-900"></i>
+                        </div>
+                        <span class="text-xl font-bold">Expert em Licitações</span>
+                    </div>
+                    <p class="text-sm text-gray-300 mt-2">O maior canal de licitações do YouTube</p>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="#" class="text-white hover:text-gold transition">
+                        <i class="fab fa-youtube text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-white hover:text-gold transition">
+                        <i class="fab fa-instagram text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-white hover:text-gold transition">
+                        <i class="fab fa-facebook text-2xl"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="border-t border-blue-800 mt-8 pt-8 text-center text-sm text-gray-300">
+                <p>© 2025 Expert em Licitações. Todos os direitos reservados.</p>
+                <p class="mt-2">Este produto não garante resultados financeiros. Seu desempenho dependerá do seu esforço e dedicação.</p>
+                <div class="mt-4 space-x-4">
+                    <a href="#" class="hover:text-gold">Termos de Uso</a>
+                    <a href="#" class="hover:text-gold">Política de Privacidade</a>
+                    <a href="#" class="hover:text-gold">Contato</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float -->
+    <a href="#" class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-xl hover:bg-green-600 transition z-50">
+        <i class="fab fa-whatsapp text-2xl"></i>
+    </a>
+
+    <script>
+        // Contador regressivo
+        function updateCountdown() {
+            const now = new Date();
+            const end = new Date();
+            end.setHours(23, 59, 59, 999);
+            
+            if(now > end) {
+                end.setDate(end.getDate() + 1);
+            }
+            
+            const diff = end - now;
+            
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            document.getElementById('countdown').innerHTML = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            document.getElementById('countdown2').innerHTML = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+        
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+        
+        // Menu mobile
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+        
+        // Popup
+        setTimeout(() => {
+            showPopup();
+        }, 15000);
+        
+        function showPopup() {
+            document.getElementById('popup').style.display = 'flex';
+        }
+        
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+        
+        // Form submission
+        document.getElementById('lead-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Obrigado! Em breve você receberá o modelo de recurso grátis no seu e-mail.');
+            closePopup();
+        });
+        
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
